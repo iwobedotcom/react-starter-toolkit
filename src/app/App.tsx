@@ -2,10 +2,7 @@ import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from 'src/components';
 import { ROUTE } from 'src/constants/routes';
-
 import { ExampleFeature } from 'src/features/exampleFeature/ExampleFeature';
-
-import './app.scss';
 
 export const App: React.FC = () => {
   return (
