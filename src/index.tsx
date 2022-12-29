@@ -1,13 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './scss';
-import { App } from './app/App';
+import { Provider } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
 
+// Import root app
+import App from './app';
+
+import { rootStore } from './app/rootStore';
+
+import { HelmetProvider } from 'react-helmet-async';
+
+import './i18n/i18n';
+
+import './index.scss';
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={rootStore}>
+      <HelmetProvider>
+        <App />
+      </HelmetProvider>
+    </Provider>
   </React.StrictMode>,
 );
 
