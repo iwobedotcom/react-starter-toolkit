@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from 'react';
-import { Navigate, Route, Routes as Routes_ } from 'react-router-dom';
+import { Route, Routes as Routes_ } from 'react-router-dom';
+import Layout from './views/layout/Layout';
 import { Home } from './views/pages';
 const AboutPage = lazy(() => import('./views/pages/AboutPage'));
 const NotFoundPage = lazy(() => import('./views/pages/NotFoundPage'));
@@ -12,10 +13,11 @@ function Routes() {
   return (
     <Suspense fallback={<LinearProgress />}>
       <Routes_>
-        <Route path={'/'} element={<Home />} />
-        <Route path={'/about'} element={<AboutPage />} />
-        <Route path={'/not-found'} element={<NotFoundPage />} />
-        <Route path="*" element={<Navigate to={'/not-found'} />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
       </Routes_>
     </Suspense>
   );
